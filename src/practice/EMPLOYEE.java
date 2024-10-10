@@ -1,21 +1,29 @@
-
 package practice;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 
+abstract class EMPLOYEE implements IEMPLOYEE {
 
-abstract class EMPLOYEE implements IEMPLOYEE{
-     private String empID;
+    private String empID;
     private String empName;
-    private LocalDate empDateOfBirth;
+    private Date empDateOfBirth;
     private LocalDate startDate;
 
-    public EMPLOYEE(String empID, String empName, LocalDate empDateOfBirth, LocalDate startDate) {
+    public EMPLOYEE(String empID, String empName, Date empDateOfBirth, LocalDate startDate) {
         this.empID = empID;
         this.empName = empName;
         this.empDateOfBirth = empDateOfBirth;
         this.startDate = startDate;
+    }
+
+    public Date getEmpDateOfBirth() {
+        return empDateOfBirth;
+    }
+
+    public void setEmpDateOfBirth(Date empDateOfBirth) {
+        this.empDateOfBirth = empDateOfBirth;
     }
 
     public EMPLOYEE() {
@@ -42,14 +50,6 @@ abstract class EMPLOYEE implements IEMPLOYEE{
         this.empName = empName;
     }
 
-    public LocalDate getEmpDateOfBirth() {
-        return empDateOfBirth;
-    }
-
-    public void setEmpDateOfBirth(LocalDate empDateOfBirth) {
-        this.empDateOfBirth = empDateOfBirth;
-    }
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -59,9 +59,12 @@ abstract class EMPLOYEE implements IEMPLOYEE{
     }
 
     public int CalculateSeniority() {
-        return Period.between(startDate, LocalDate.now()).getYears();
+        int thisYear = LocalDate.now().getYear();
+        int startYear = getStartDate().getYear() + 1900;
+        return (thisYear - startYear);
     }
 
     public abstract void Input();
+
     public abstract void Output();
 }

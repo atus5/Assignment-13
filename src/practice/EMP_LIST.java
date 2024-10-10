@@ -41,4 +41,12 @@ public class EMP_LIST {
         }
         
     }
+    public double caculateSalary(){
+        double fee = 0;
+        for (EMPLOYEE employee : list) {
+            fee += employee.CalculateSalary();
+        }
+        System.out.println("Salary = " + fee);
+        return fee;
+    }
 }

@@ -42,6 +42,9 @@ public class Processor {
                     case 6:
                         list.DisplayMenu();
                         break;
+                    case 7:
+                        list.caculateSalary();
+                        break;
                     default:
                         throw new AssertionError();
                 }

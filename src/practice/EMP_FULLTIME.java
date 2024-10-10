@@ -1,22 +1,20 @@
-
 package practice;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
+public class EMP_FULLTIME extends EMPLOYEE implements IEMPLOYEE {
 
-public class EMP_FULLTIME extends EMPLOYEE implements IEMPLOYEE{
     Scanner sc = new Scanner(System.in);
     private double coefficientSalary;
 
     public EMP_FULLTIME() {
     }
 
-    public EMP_FULLTIME(double coefficientSalary, String empID, String empName, LocalDate empDateOfBirth, LocalDate startDate) {
-        super(empID, empName, empDateOfBirth, startDate);
-        this.coefficientSalary = coefficientSalary;
-    }
+   
 
     public EMP_FULLTIME(double coefficientSalary) {
         this.coefficientSalary = coefficientSalary;
@@ -24,7 +22,7 @@ public class EMP_FULLTIME extends EMPLOYEE implements IEMPLOYEE{
 
     @Override
     public String toString() {
-        return "EMP_FULLTIME = {"+ super.toString() + "coefficientSalary=" + coefficientSalary + '}';
+        return "EMP_FULLTIME = {" + super.toString() + "coefficientSalary=" + coefficientSalary + '}';
     }
 
     public double getCoefficientSalary() {
@@ -60,9 +58,9 @@ public class EMP_FULLTIME extends EMPLOYEE implements IEMPLOYEE{
         setEmpName(sc.nextLine());
 
         System.out.print("Enter Date of Birth (dd/MM/yyyy): ");
-        String dobInput = sc.nextLine();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            LocalDate empDateOfBirth = LocalDate.parse(dobInput, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            Date empDateOfBirth = sdf.parse(sc.nextLine());
             setEmpDateOfBirth(empDateOfBirth);
         } catch (Exception e) {
             e.printStackTrace();

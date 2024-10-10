@@ -2,8 +2,10 @@
 package practice;
 
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import java.util.Scanner;
 
@@ -15,10 +17,7 @@ public class EMP_PARTTIME extends EMPLOYEE implements IEMPLOYEE{
     public EMP_PARTTIME() {
     }
 
-    public EMP_PARTTIME(int numberOfWorkdays, String empID, String empName, LocalDate empDateOfBirth, LocalDate startDate) {
-        super(empID, empName, empDateOfBirth, startDate);
-        this.numberOfWorkdays = numberOfWorkdays;
-    }
+    
 
     public EMP_PARTTIME(int numberOfWorkdays) {
         this.numberOfWorkdays = numberOfWorkdays;
@@ -62,9 +61,9 @@ public class EMP_PARTTIME extends EMPLOYEE implements IEMPLOYEE{
         setEmpName(sc.nextLine());
 
         System.out.print("Enter Date of Birth (dd/MM/yyyy): ");
-        String dobInput = sc.nextLine();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            LocalDate empDateOfBirth = LocalDate.parse(dobInput, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            Date empDateOfBirth = sdf.parse(sc.nextLine());
             setEmpDateOfBirth(empDateOfBirth);
         } catch (Exception e) {
             e.printStackTrace();
